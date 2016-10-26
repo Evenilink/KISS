@@ -1,9 +1,4 @@
 <style>
-    #title,
-    #subtitle {
-        text-align: center;
-        margin: 0;
-    }
 
     h2 {
         text-align: center;
