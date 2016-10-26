@@ -1,3 +1,3 @@
-#This is a test
-Lets see if it works :D
+##KISS Launcher - Keep It Short and Simple
+#Processos de Software
 ![FEUP Logo](Images/feup.png)
