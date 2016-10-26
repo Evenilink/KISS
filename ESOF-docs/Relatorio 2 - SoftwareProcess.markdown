@@ -1,6 +1,11 @@
 <style>
+    #title,
+    #subtitle {
+        text-align: center;
+        margin: 0;
+    }
 
-    h2 {
+    #esof {
         text-align: center;
         margin-top: 3em;
     }
