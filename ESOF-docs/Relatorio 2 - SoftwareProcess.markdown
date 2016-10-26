@@ -5,7 +5,7 @@
         margin: 0;
     }
 
-    #esof {
+    h2 {
         text-align: center;
         margin-top: 3em;
     }
