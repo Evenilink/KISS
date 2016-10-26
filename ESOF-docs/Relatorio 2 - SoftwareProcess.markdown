@@ -1,5 +1,5 @@
 #KISS Launcher - Keep It Short and Simple
-<p align="center">This is some text in a paragraph.</p>>
+<p align="center">#Processos de Software</p>>
 
 
 ![FEUP Logo](Images/feup.png)
