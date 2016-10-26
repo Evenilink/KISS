@@ -1,3 +1,3 @@
 #This is a test
 Lets see if it works :D
-![FEUP Logo](/images/logo.png)
+![FEUP Logo](/images/feup.png)
