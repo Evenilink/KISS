@@ -96,4 +96,15 @@ Finally, he can simply see the apps he has installed, and for that he can show t
 Since there are many settings that can be changed on a mobile phone, we’re only listing some of them. Listing all would be unnecessary for this work, because the use cases would grow quite a lot on size, growing always in the same way and without adding value to the report.
 
 ![Use cases diagram](Images/use_cases.png)
-(right click > open image in new tab)
+(enlarge: right click -> open image in new tab)
+
+### Domain Model
+As we've already stated through out this report (and the previous one), KISS is an android launcher. As such, there are only three main interactions the user has with the app: access KISS settings, access the phone's data and access the phone's settings.
+
+This can be better observed in the following diagram.
+
+![Domain model diagram](Images/domain_model.jpg)
+(enlarge: right click -> open image in new tab)
+
+## Contributions
+Every group member worked evenly in order to create this report.
