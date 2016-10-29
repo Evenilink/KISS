@@ -95,4 +95,5 @@ Finally, he can simply see the apps he has installed, and for that he can show t
 
 Since there are many settings that can be changed on a mobile phone, we’re only listing some of them. Listing all would be unnecessary for this work, because the use cases would grow quite a lot on size, growing always in the same way and without adding value to the report.
 
-![Use cases diagram](Images/use_cases.png)
+[![Use cases diagram](Images/use_cases.png)](/Images/use_cases.png)
+(click to enlarge)
