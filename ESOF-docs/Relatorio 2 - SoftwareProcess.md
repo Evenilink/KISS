@@ -105,7 +105,7 @@ As we've already stated through out this report (and the previous one), KISS is 
 
 This can be better observed in the following diagram.
 
-![Domain model diagram](Images/domain_model.jpg)
+![Domain model diagram](Images/domain_model.png)
 
 (enlarge: right click -> open image in new tab)
 
