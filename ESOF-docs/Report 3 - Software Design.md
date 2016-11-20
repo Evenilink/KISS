@@ -29,8 +29,8 @@ We can specify the design the software follows. To do this, the software functio
 ### 4+1 View Model
 
 ##### This model is composed of 5 views:
-* Use Case View - Already worked in the last report.
-* Logical View - Diagram that show abstractions in the system as objects, classes, or even packages. Since the project we're working on is fully developed in Java, this diagram will use the project's packages.
+* Use Case View - Done in the last report.
+* Logical View - Diagram that shows abstractions in the system as objects, classes, or even packages. Since the project we're working on is fully developed in Java, this diagram will use the project's packages and some of the most important classes in order to be better understood.
 * Implementation View - Diagram based on the relationships and dependencies between components.
 * Deployment View - Diagram illustrating resources (hardware) the software needs in order to run, and how the components are distributed around it.
 * Process View - Diagram showing the interactions and flow of the system's processes.
@@ -42,14 +42,14 @@ Since our project didn't follow a software process, it's likely it doesn't follo
 It doesn't follow a Model-View-Controller Architecture. All of the code is connected, all the packages can interact with all the others. It certainly has classes and packages only related with UI and presentation, but they're not independent enough to be able to change easily without changing code in packages unrelated with the presentation.
 
 It's doesn't follow a Layered Architecture, since there's no layers implemented, just packages that have classes and those classes can interact with any other class in the project. It doesn't have an architecture in which there is abstractions that use more specific and concrete functions, because all the services every class provides can be accessed by any other class in the whole project.
-Since it's a full Java project, we don't think there was a great need to structure the project into layers, since it's quite easy to access all information this way (specific or not so specific). Besides, providing a layer structure in this kind of projects can be very hard and, as we said above, not that necessary.
+Since it's a full Java project, we don't think there was a great need to structure the project into layers, because it's quite easy to access all information this way (specific or not so specific). Besides, providing a layer structure in this kind of projects can be very hard and, as we said above, not that necessary.
 One last note about this architecture is that, since there's many layers, processing may be slower (due to the multiple levels in interpretation), which goes against the project's policy of being fast and efficient.
 
 It doesn't follow a Repository Architecture. There' s no large volumes of data to be stored/shared (the software only access what the mobile phone has in the moment), and there's no need to divide the few existing components into subsystems.
 
-It doesn't follow a Client-Server Architecture. We can see similarities, such as the user inputing a contact's name in the search bar, and the software, based on the name the user provided, searching the contact in the database and returning the information and call options for that contact.
+It doesn't follow a Client-Server Architecture. We can see similarities, such as the user typing a contact's name in the search bar, and the software, based on the name the user provided, searches the contact in the database and returns the information and call options for that contact.
 The similarities stop there, since all accesses are made in one location (the user's phone), and there's no need for a server. The basic idea of providing information for the software to search in the database, and the software returning with a result, is the only similarity with this type of architecture.
-There was no need to use this one, since there's no need for servers and there's only one access point.
+There was no need to use this architecture, since the software has no need for servers and has only one access point.
 
 So, what's the architecture being used here? A custom made one, which tries to get the best possible result in terms of memory usage and CPU consumption.
 It's probably not the best idea not having a specific architecture for the software to follow, but the information regarding the project's structure in their [GitHub](https://github.com/Neamar/KISS/blob/master/CONTRIBUTING.md#how-does-it-work) is a good starting point to understand how the project is structured.
