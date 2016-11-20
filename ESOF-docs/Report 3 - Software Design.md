@@ -37,7 +37,7 @@ We can specify the design the software follows. To do this, the software functio
 
 ### Architectural Patterns
 
-Since our project didn't follow a software process, it's likely it doesn't follow an architectural pattern too.
+Since our project doesn't follow a software process, it's understandable that it doesn't follow an architectural pattern too.
 
 It doesn't follow a Model-View-Controller Architecture. All of the code is connected, all the packages can interact with all the others. It certainly has classes and packages only related with UI and presentation, but they're not independent enough to be able to change easily without changing code in packages unrelated with the presentation.
 
