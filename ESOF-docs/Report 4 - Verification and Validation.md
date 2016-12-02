@@ -23,10 +23,8 @@
 * Understandability: how good a component under test is documented.
 * Heterogeneity: using diverse technologies, how deep are the test methods and required tools in order to be testable using those technologies.
 
-
 ### Test Statictics and Analystic:
-	We stated our project didn’t have tests implemented. As such, the projects doesn’t have the information about the number of test cases, percentage of coverage or number of flaky tests.
-	We’re going to try and provide a viable way to implement unit tests in the project.
-
+We stated our project didn’t have tests implemented. As such, the projects doesn’t have the information about the number of test cases, percentage of coverage or number of flaky tests.
+We’re going to try and provide a viable way to implement unit tests in the project.
 
 ### Identify a new bug and/or correct a bug
