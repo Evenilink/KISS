@@ -14,7 +14,7 @@
 ### Table of Contents
 * [Software Testability and Reviews](#Software-Testability-and-Reviews)
 * [Test Statictics and Analystic](#test-statictics-and-analystic)
-* [Identify a new bug and/or correct a bug](#identify-a-new-bug-and/or-correct-a-bug)
+* [Identify a new bug and correct it](#identify-a-new-bug-and-correct-it)
 * [Contributions](#contributions)
 
 ### Software Testability and Reviews
@@ -35,7 +35,7 @@ So basically, all the testing is manual.
 When it comes to statistics, since there are no real tests to run, there's no statistics to show, only some bugs info. When the app crashes, the user can send the stack trace to the developers team. This way it's possible for the developers to be aware of some bugs' existence.
 
 
-### Identify a new bug and/or correct a bug
+### Identify a new bug and correct it
 We started by fixing issue [#531](https://github.com/Neamar/KISS/issues/531).
 
 In order to do this, we removed the finish() call from the SettingsActivity, like suggested on the issue report. This call was causing the SettingsActivity to close when it lost focus, so when the screen changed orientation, the activity would finish, as the issue states. We also did a slight cleaning on the if statement, since with the finish() removed there was no need for an if...else statement.
