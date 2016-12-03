@@ -17,7 +17,7 @@
 * [Identify a new bug and correct it](#identify-a-new-bug-and-correct-it)
 * [Contributions](#contributions)
 
-### Software Testability and Reviews
+## Software Testability and Reviews
 * Testability: the chance to expose a fault/bug through tests. In our project we can only identify bugs through manual testing, so the testability sucess would depend on how much time and effort the developers put into it.
 
 * Controllability: affecting the behavior of the software, with how much work can we provide a program with the right and needed inputs for testing that will affect his behavior. This one is quite hard in our project. Since the tests needed to have acess to the system's data, developing a robust test suite to handle the creation of such data would be hard.
