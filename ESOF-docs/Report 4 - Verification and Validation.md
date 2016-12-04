@@ -33,7 +33,7 @@
 * **Heterogeneity**: using diverse technologies, how deep are the test methods and required tools in order to be testable using those technologies. The only technology at hands is java, so were test method implemented, java wouldn't be an obstacle at running them.
 
 ## Test Statictics and Analystic
-We stated our project didn’t have tests implemented. As such, the projects doesn’t have information about the number of test cases, percentage of coverage or number of flaky tests.
+We stated previously that our project doesn’t have tests implemented. As such, the project doesn’t have information about the number of test cases, percentage of coverage or number of flaky tests.
 
 The only automatic test being used is a very basic one, like testing if the project compiles or if it displays certain information, like if the results appear, if it can type in the search bar, etc...
 
