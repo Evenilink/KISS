@@ -35,7 +35,7 @@
 ## Test Statictics and Analystic
 We stated previously that our project doesn’t have tests implemented. As such, the project doesn’t have information about the number of test cases, percentage of coverage or number of flaky tests.
 
-The only automatic test being used is a very basic one, like testing if the project compiles or if it displays certain information, like if the results appear, if it can type in the search bar, etc...
+The only automatic test being used is very basic and tests few functionalities like whether the project compiles, if it is possible to type in the search bar, if the search results are being displayed, etc.
 
 Eclipse is to be blamed for the inexistence of robust tests. At the time the project started, Eclipse made tests complicated to program and to run. KISS relies on system data (e.g. contacts), so the app needed to acess the contacts in order to manipulate them. To develop a test in order to see if the contacts were being correctly processed, a contact needed to be created (every time a test was running). If the test failed the contact would remain in the system. Running the test many times would create a huge amount of useless data! It was impossible to use emulators for the job, so the developers could only use their phones.
 
