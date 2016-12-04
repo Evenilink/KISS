@@ -20,7 +20,7 @@
 ## Software Testability and Reviews
 * **Testability**: the chance to expose a fault/bug through tests. In our project we can only identify bugs through manual testing, so the testability success would depend on how much time and effort the developers put into it.
 
-* **Controllability**: affecting the behavior of the software, with how much work can we provide a program with the right and needed inputs for testing that will affect his behavior. This one is quite hard in our project. Since the tests needed to have acess to the system's data, developing a robust test suite to handle the creation of such data would be hard.
+* **Controllability**: ability to affect the behavior of the software, that is, how much work can we provide a program with the needed inputs for testing that will affect its behavior. This one is quite hard in our project. Since the tests needed to have access to the system's data, developing a robust test suite to handle the creation of such data would be hard.
 
 * **Observability**: how easy it is for developers to observe the software behavior, more specifically, his outputs, and his response to the tests. Since there are no specific tests implemented, this is pretty much impossible to see in the project. Using manual tests we can only be aware of the difference of what happened and what should have happened.
 
