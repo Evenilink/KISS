@@ -15,7 +15,7 @@
 * [Link to Pull Request](#Link-to-Pull-Request)
 
 ### Software Maintainability
-//Wait until the professor send us the invitation.
+[![BCH compliance](https://bettercodehub.com/edge/badge/Evenilink/KISS)](https://bettercodehub.com)
 
 ### Report Evolution Process
 
