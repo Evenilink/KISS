@@ -35,6 +35,6 @@ It succeded on the following tests:
 ### Report Evolution Process
 We decided to add an option to set the KISS application as the default home since we noticed that in some phones after choosing to always have the android launcher as default there wasn't an option to revert this. Therefore after pressing *Home*, the phone would show the default home launcher instead of going back to KISS. As such, we thought that having an option to change this on the application itself would be very useful.
 
-It was fairly easy to locate the parts in the source code that needed to be modified. Since the feature we wanted to implement would add an option to the settings, it was simple to guess that most of the changes we needed to do were located on *SettingsActivity*.
+It was fairly easy to locate the parts in the source code that needed to be modified. Since the feature we wanted to implement was to add an option to the settings, it was simple to guess that most of the changes we needed to do were located on *SettingsActivity*.
 
 ### Link to Pull Request
