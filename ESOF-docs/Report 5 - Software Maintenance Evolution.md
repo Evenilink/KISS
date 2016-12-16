@@ -33,6 +33,6 @@ It succeded on the following tests:
 * **Write clean code** - 
 
 ### Report Evolution Process
-We decided to add an option to set the KISS application as the default home since we noticed that in some phones after choosing to always have the android launcher as default there wasn't an option to revert this. Therefore after pressing "Home", the phone would show the default home launcher instead of going back to KISS. As such, we thought that having an option to change this on the application itself would make setting KISS as the default launcher much easier. 
+We decided to add an option to set the KISS application as the default home since we noticed that in some phones after choosing to always have the android launcher as default there wasn't an option to revert this. Therefore after pressing "Home", the phone would show the default home launcher instead of going back to KISS. As such, we thought that having an option to change this on the application itself would be very useful. 
 
 ### Link to Pull Request
