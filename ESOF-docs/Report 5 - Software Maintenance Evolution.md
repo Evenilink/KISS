@@ -36,7 +36,7 @@ It succeeded on the following tests:
 ### Report Evolution Process
 We decided to add an option to let the user choose the Default Launcher. We noticed that in some phones after choosing to always have the Android Launcher as default, it was complicated to revert this. Therefore, after pressing the  *Home Button*, the phone would show the default *Home Screen* instead of going back to KISS. As such, we thought that having an option to change this behaviour on the application itself would be very useful.
 
-It was fairly easy to locate the parts in the source code that needed to be modified. Since the feature we wanted to implement consited of adding an option to the settings screen, we knew from the start that most of our changes would be focused around the file *preferences.xml*.
+It was fairly easy to locate the parts in the source code that needed to be modified. Since the feature we wanted to implement consisted in adding an option to the settings screen, we knew from the start that most of our changes would be focused around the file *preferences.xml*.
 
 Adding the extra option to the settings screen was the easy part. We just had to add an extra entry to *preferences.xml* and create a new *Preference* class to launch.
 
