@@ -5,9 +5,9 @@
 ### Software Engineering - MIEIC
 
 ##### Group:
-* Cláudia Margarida da Rocha Marinho - up201404493
-* José Carlos Alves Vieira - up201404446
-* Tiago Rafael Ferreira da Silva - up201402841
+* [Cláudia Margarida da Rocha Marinho](https://github.com/arwen7stars) - up201404493
+* [José Carlos Alves Vieira](https://github.com/Evenilink) - up201404446
+* [Tiago Rafael Ferreira da Silva](https://github.com/tirafesi) - up201402841
 
 ### Table of Contents
 * [Software Maintainability](#Software-Maintainability)
