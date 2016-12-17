@@ -14,7 +14,7 @@
 * [Report Evolution Process](#Report-Evolution-Process)
 * [Link to Pull Request](#Link-to-Pull-Request)
 
-### Software Maintainability
+## Software Maintainability
 Using [Better Code Hub](https://bettercodehub.com) to analyse our project's compliance, the result was quite good, rating a 7 out of 10.
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/Evenilink/KISS)](https://bettercodehub.com)
@@ -33,7 +33,7 @@ It succeeded on the following tests:
 * **Keep the codebase small** - the code's volume is mainly right, improving maintainability and lowering the amount of work it would take to make structural changes.
 * **Write clean code** - although there are some commented code, there's only a few code smells, providing a maintainable environment for the developers to work on.
 
-### Report Evolution Process
+## Report Evolution Process
 We decided to add an option to let the user choose the Default Launcher. We noticed that in some phones after choosing to always have the Android Launcher as default, it was complicated to revert this. Therefore, after pressing the  *Home Button*, the phone would show the default *Home Screen* instead of going back to KISS. As such, we thought that having an option to change this behaviour on the application itself would be very useful.
 
 It was fairly easy to locate the parts in the source code that needed to be modified. Since the feature we wanted to implement consisted in adding an option to the settings screen, we knew from the start that most of our changes would be focused around the file *preferences.xml*.
@@ -127,4 +127,4 @@ context.startActivity(intent);
 packageManager.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 ```
 
-### Link to Pull Request
+## Link to Pull Request
