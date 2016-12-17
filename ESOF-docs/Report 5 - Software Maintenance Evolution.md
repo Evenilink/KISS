@@ -23,14 +23,14 @@ It failed on the following tests:
 * **Writing simple units of code** - some of the units have more than 5 branch points (if, for, while, etc), raising complexity during code analysis, change and test. Sub-branches that have more than 5 branch points needed to be seperated to new units of no more than 5 branch points.
 * **Automate tests** - this one didn't come as a surprise, since we've been refering it through the whole project. Since our project only tests some basic functionalities, the extend of testing code is below the suggested. The project has 5417 lines of production code and only 71 of test code, and the sugested is at least half of the production code, in this case 2574 lines.
 
-It succeded on the following tests:
+It succeeded on the following tests:
 * **Write code once** - very few code is duplicated, avoiding copy-paste erros and error fix in multiple places.
 * **Keep unit interfaces small** - the suggested number of parameters per unit is 2. Most of the units have 2 to 4, making the units easier to understand and reuse.
 * **Separate concern in modules** - the suggested number of modules calls is no more than 10, to avoid the consequences of change. Only 4 modules have more than 10 calls.
-* **Couple architecture components loosely** -
-* **Keep architecture components balanced** -
-* **Keep the codebase small** -
-* **Write clean code** -
+* **Couple architecture components loosely** - 
+* **Keep architecture components balanced** - components are well defined based on their functionality.
+* **Keep the codebase small** - the code is balanced and it's volume is mainly right, improving maintainability.
+* **Write clean code** - although there are some commented code, the code smells are few, providing a maintainable environment for the developers to work on.
 
 ### Report Evolution Process
 We decided to add an option to let the user choose the Default Launcher. We noticed that in some phones after choosing to always have the Android Launcher as default, it was complicated to revert this. Therefore, after pressing the  *Home Button*, the phone would show the default *Home Screen* instead of going back to KISS. As such, we thought that having an option to change this behaviour on the application itself would be very useful.
