@@ -27,14 +27,103 @@ It succeded on the following tests:
 * **Write code once** - very few code is duplicated, avoiding copy-paste erros and error fix in multiple places.
 * **Keep unit interfaces small** - the suggested number of parameters per unit is 2. Most of the units have 2 to 4, making the units easier to understand and reuse.
 * **Separate concern in modules** - the suggested number of modules calls is no more than 10, to avoid the consequences of change. Only 4 modules have more than 10 calls.
-* **Couple architecture components loosely** - 
-* **Keep architecture components balanced** - 
-* **Keep the codebase small** - 
-* **Write clean code** - 
+* **Couple architecture components loosely** -
+* **Keep architecture components balanced** -
+* **Keep the codebase small** -
+* **Write clean code** -
 
 ### Report Evolution Process
-We decided to add an option to set the KISS application as the default home since we noticed that in some phones after choosing to always have the android launcher as default there wasn't an option to revert this. Therefore after pressing *Home*, the phone would show the default home launcher instead of going back to KISS. As such, we thought that having an option to change this on the application itself would be very useful.
+We decided to add an option to let the user choose the Default Launcher. We noticed that in some phones after choosing to always have the Android Launcher as default, it was complicated to revert this. Therefore, after pressing the  *Home Button*, the phone would show the default *Home Screen* instead of going back to KISS. As such, we thought that having an option to change this behaviour on the application itself would be very useful.
 
-It was fairly easy to locate the parts in the source code that needed to be modified. Since the feature we wanted to implement was to add an option to the settings, it was simple to guess that most of the changes we needed to do were located on *SettingsActivity*.
+It was fairly easy to locate the parts in the source code that needed to be modified. Since the feature we wanted to implement consited of adding an option to the settings screen, we knew from the start that most of our changes would be focused around the file *preferences.xml*.
+
+Adding the extra option to the settings screen was the easy part. We just had to add an extra entry to *preferences.xml* and create a new *Preference* class to launch.
+
+*preferences.xml*
+```java
+<PreferenceScreen android:title="@string/title_advanced">
+    <fr.neamar.kiss.preference.DefaultLauncherPreference
+        android:dialogMessage="@string/default_launcher_warn"
+        android:key="default-launcher"
+        android:title="@string/default_launcher_title"/>
+```
+
+*DefaultLauncherPreference*
+
+```java
+public class DefaultLauncherPreference extends DialogPreference {
+
+}
+```
+
+The difficult part came afterwards. We had to find a way to change the Default Launcher.
+
+Well, turns out this is simply impossible to do programmatically. As you can imagine, allowing an application to set the default behaviour of the phone would be a major security problem.
+
+As such, the only solution is to ask the user to change the Default Launcher himself. But how can this be accomplished?
+
+We could create an [App Chooser](https://developer.android.com/training/basics/intents/sending.html#AppChooser), but that raised a problem. It didn't allow the user to set an app as default. It only allowed to select the app for that *specific* action, at that *specific* moment. So this wouldn't be any good.
+
+After struggling for a while to find an answer, we came across [this](http://stackoverflow.com/questions/13167583/clearing-and-setting-the-default-home-application/13239706#13239706) post, on Stack Overflow.
+
+And so, we decided to follow this approach.
+
+We simply had to *trick* the phone, in order for it to think that there was a new app installed, so that it would show the App Chooser (notice that this chooser now has the option to set default apps, since it was started by the System itself, and not programatically).
+
+In order to do this, we created a dummy (or fake - however you want to call it) Activity. As the name suggest, this is just a *completly* empty Activity.
+
+*DummyActivity.java*
+```java
+public class DummyActivity extends Activity {
+
+}
+```
+
+Now, all that was left was to fill the *DefaultLauncherPreference* and trick the phone into launching an App Chooser through the System.
+
+This was done by creating a new *ACTION_MAIN Intent*, with a *HOME* category associated to it, and then launching it.
+
+
+*DefaultLauncherPreference.java*
+```java
+// create a new (implicit) intent with MAIN action
+Intent intent = new Intent(Intent.ACTION_MAIN);
+// add HOME category to it
+intent.addCategory(Intent.CATEGORY_HOME);
+// launch intent
+context.startActivity(intent);
+```
+
+However, after the first time this was used, it would stop working. Because the phone would no longer assume the DummyActivity was a new app. The phone already knew it, so the App Chooser wouldn't launch.
+
+In order to avoid this, DummyActivity starts off disabled, in order to *hide* it from the system. It then gets enabled when it's time to launch the intent that will trick the phone. After that, it is disabled once again, in order for it be re-usable the next time we need to trick the phone.
+
+*AndroidManifest.xml*
+```java
+<activity android:name=".DummyActivity"
+      android:enabled="false">
+      <intent-filter>
+          <action android:name="android.intent.action.MAIN" />
+          <category android:name="android.intent.category.HOME" />
+          <category android:name="android.intent.category.DEFAULT" />
+      </intent-filter>
+  </activity>
+```
+
+*DefaultLauncherPreference.java*
+```java
+// enable dummyActivity (it starts disabled in the manifest.xml)
+packageManager.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+
+// create a new (implicit) intent with MAIN action
+Intent intent = new Intent(Intent.ACTION_MAIN);
+// add HOME category to it
+intent.addCategory(Intent.CATEGORY_HOME);
+// launch intent
+context.startActivity(intent);
+
+// disable dummyActivity once again
+packageManager.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+```
 
 ### Link to Pull Request
