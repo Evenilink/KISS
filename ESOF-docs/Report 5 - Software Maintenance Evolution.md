@@ -10,9 +10,9 @@
 * [Tiago Rafael Ferreira da Silva](https://github.com/tirafesi) - up201402841
 
 ### Table of Contents
-* [Software Maintainability](#Software-Maintainability)
-* [Report Evolution Process](#Report-Evolution-Process)
-* [Link to Pull Request](#Link-to-Pull-Request)
+* [Software Maintainability](#software-maintainability)
+* [Report Evolution Process](#report-evolution-process)
+* [Link to Pull Request](#link-to-pull-request)
 
 ## Software Maintainability
 Using [Better Code Hub](https://bettercodehub.com) to analyse our project's compliance, the result was quite good, rating a 7 out of 10.
