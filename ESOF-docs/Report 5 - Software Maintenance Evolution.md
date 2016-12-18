@@ -34,11 +34,11 @@ It succeeded on the following tests:
 * **Write clean code** - although there are some commented code, there's only a few code smells, providing a maintainable environment for the developers to work on.
 
 ## Report Evolution Process
-We decided to add an option to let the user choose the Default Launcher. We noticed that in some phones after choosing to always have the Android Launcher as default, it was complicated to revert this. Therefore, after pressing the  *Home Button*, the phone would show the default *Home Screen* instead of going back to KISS. As such, we thought that having an option to change this behaviour on the application itself would be very useful.
+We decided to add an option to let the user choose the Default Launcher. We noticed that in some phones after choosing to always have the Android Launcher as default, it was complicated to revert this. Therefore, after pressing the  *Home Button*, the phone would show the default *Home Screen* instead of going back to KISS. As such, we thought that having an option to change this behavior on the application itself would be very useful.
 
-It was fairly easy to locate the parts in the source code that needed to be modified. Since the feature we wanted to implement consisted in adding an option to the settings screen, we knew from the start that most of our changes would be focused around the file *preferences.xml*.
+It was fairly easy to locate the parts in the source code that needed to be modified. Since the feature we wanted to implement consisted of adding an option to the settings screen, we knew from the start that most of our changes would be focused around the file *preferences.xml*.
 
-Adding the extra option to the settings screen was the easy part. We just had to add an extra entry to *preferences.xml* and create a new *Preference* class to launch.
+Adding the extra option to the settings screen was the easy part. We just had to add an extra entry to *preferences.xml* and create a new *Preference* class.
 
 *preferences.xml*
 ```java
@@ -49,7 +49,7 @@ Adding the extra option to the settings screen was the easy part. We just had to
         android:title="@string/default_launcher_title"/>
 ```
 
-*DefaultLauncherPreference*
+*DefaultLauncherPreference.java*
 
 ```java
 public class DefaultLauncherPreference extends DialogPreference {
@@ -59,9 +59,9 @@ public class DefaultLauncherPreference extends DialogPreference {
 
 The difficult part came afterwards. We had to find a way to change the Default Launcher.
 
-Well, turns out this is simply impossible to do programmatically. As you can imagine, allowing an application to set the default behaviour of the phone would be a major security problem.
+Well, turns out this is simply impossible to do programmatically. As you can imagine, allowing an application to set the default behavior of the phone would be a major security problem.
 
-As such, the only solution is to ask the user to change the Default Launcher himself. But how can this be accomplished?
+As such, the only solution was to ask the user to change the Default Launcher himself. But how could this be accomplished?
 
 We could create an [App Chooser](https://developer.android.com/training/basics/intents/sending.html#AppChooser), but that raised a problem. It didn't allow the user to set an app as default. It only allowed to select the app for that *specific* action, at that *specific* moment. So this wouldn't be any good.
 
@@ -69,15 +69,26 @@ After struggling for a while to find an answer, we came across [this](http://sta
 
 And so, we decided to follow this approach.
 
-We simply had to *trick* the phone, in order for it to think that there was a new app installed, so that it would show the App Chooser (notice that this chooser now has the option to set default apps, since it was started by the System itself, and not programatically).
+We simply had to *trick* the phone, in order for it to think that there was a new app installed, so that it would show the App Chooser (notice that this chooser now has the option to set default apps, since it was launched by the System itself, and not programmatically).
 
-In order to do this, we created a dummy (or fake - however you want to call it) Activity. As the name suggest, this is just a *completly* empty Activity.
+In order to do this, we created a dummy (or fake - however you want to call it) Activity. As the name suggest, this is just a *completely* empty Activity. But this alone isn't enough. We need to tell the System that there is, in fact, a new app capable of receiving *Home* intents (the *Intent* launched when the *Home Button* is pressed). This was done in the *AndroidManifest.xml*, by declaring an *intent-filter*.
 
 *DummyActivity.java*
 ```java
 public class DummyActivity extends Activity {
 
 }
+```
+
+*AndroidManifest.xml*
+```java
+<activity android:name=".DummyActivity">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.HOME" />
+        <category android:name="android.intent.category.DEFAULT" />
+    </intent-filter>
+    </activity>
 ```
 
 Now, all that was left was to fill the *DefaultLauncherPreference* and trick the phone into launching an App Chooser through the System.
@@ -95,9 +106,9 @@ intent.addCategory(Intent.CATEGORY_HOME);
 context.startActivity(intent);
 ```
 
-However, after the first time this was used, it would stop working. Because the phone would no longer assume the DummyActivity was a new app. The phone already knew it, so the App Chooser wouldn't launch.
+However, after the first time this was used, it would stop working, because the phone would no longer assume the DummyActivity was a new app. The phone already knew it, so the App Chooser wouldn't launch, since the user had already selected what default app he wanted.
 
-In order to avoid this, DummyActivity starts off disabled, in order to *hide* it from the system. It then gets enabled when it's time to launch the intent that will trick the phone. After that, it is disabled once again, in order for it be re-usable the next time we need to trick the phone.
+In order to avoid this, DummyActivity needs to start off disabled, in order to *hide* it from the system. It then gets enabled when it's time to launch the intent that will trick the phone. After that, it is disabled once again, in order for it to be reusable the next time we need to trick the phone.
 
 *AndroidManifest.xml*
 ```java
@@ -113,6 +124,9 @@ In order to avoid this, DummyActivity starts off disabled, in order to *hide* it
 
 *DefaultLauncherPreference.java*
 ```java
+// get dummyActivity
+ComponentName componentName = new ComponentName(context, DummyActivity.class);
+
 // enable dummyActivity (it starts disabled in the manifest.xml)
 packageManager.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
 
@@ -126,5 +140,7 @@ context.startActivity(intent);
 // disable dummyActivity once again
 packageManager.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 ```
+
+And it is complete. Now, everytime the user selects the option to change de Default Launcher, an App Chooser will appear.
 
 ## Link to Pull Request
