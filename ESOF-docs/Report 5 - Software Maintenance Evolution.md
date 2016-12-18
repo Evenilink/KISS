@@ -141,6 +141,8 @@ context.startActivity(intent);
 packageManager.setComponentEnabledSetting(componentName, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 ```
 
-And it is complete. Now, everytime the user selects the option to change de Default Launcher, an App Chooser will appear.
+And it is complete. Now, everytime the user selects the option to change the Default Launcher, an App Chooser will appear.
 
 ## Link to Pull Request
+
+The pull request is located [here](https://github.com/Neamar/KISS/pull/576).
